@@ -41,10 +41,10 @@ for rows in list(ws.iter_rows())[1:]:
     # ? 서브 정보 리스트 (strip 안된)
     sub_info_list = get_sub_info_list(sub_infos)
 
-    # ? 정보 정리하고 dict에 저장
+
+    # ! 정보 정리하고 dict에 저장
     if sub_info_list == [""]:
         add_to_dict(total_dict, brand, main_name, day, main_name)
-
     else:
         for sub_info in sub_info_list:
             sub_info = sub_info.strip()

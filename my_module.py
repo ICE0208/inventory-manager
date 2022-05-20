@@ -63,7 +63,7 @@ def get_sub_name(str):
         index_of_bar = len(str)-1 - index_of_bar
         index_of_st = str[::-1].index(STAR)
         index_of_st = len(str)-1 - index_of_st
-        return (str[:index_of_bar] + str[index_of_st+1:]).strip()
+        return (str[:index_of_bar] + str[index_of_st+1:]).strip().replace(ARROW, " ")
 
 def remove_brand(str, brand):
     return str.replace(brand, "").strip()
@@ -93,6 +93,9 @@ def get_count(name):
     return int(name[index_of_bar+1:index_of_st-1])
 
 def get_mainsub_name(main_name, sub_name):
+    main_name = main_name.replace(ARROW, " ")
+    sub_name = sub_name.replace(ARROW, " ")
+
     if main_name == "":
         return sub_name.strip().strip('[]')
     return (f"{main_name} {sub_name}").strip().strip('[]')
