@@ -4,7 +4,7 @@ from openpyxl.styles import Alignment
 from my_module import get_days_in_month, num_to_excel_columns
 
 DAY_OFFSET = 2
-def save_to_file(year, month, infos: dict):
+def save_to_file(year, month, infos: dict, TO: str):
     wb = openpyxl.Workbook() # 임시 엑셀 생성
     sheet = wb.active
 
@@ -44,6 +44,6 @@ def save_to_file(year, month, infos: dict):
     sheet.column_dimensions['B'].width = 36
     
 
-    wb.save("./temp_result.xlsx")
+    wb.save(TO)
 
 
