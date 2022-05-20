@@ -33,13 +33,15 @@ def save_to_file(year, month, infos: dict):
     for i in range(2, len(infos)+2):
         sheet.cell(i, 1).alignment = align_center
         sheet.cell(i, 2).alignment = align_center
-
     for day in v[2]:
         cur = num_to_excel_columns(int(day)+DAY_OFFSET)
         pos = f"=SUM({cur}2:{cur}{len(infos)+1})"
         sheet.cell(len(infos)+2, int(day)+DAY_OFFSET, pos)
         sheet.cell(len(infos)+2, int(day)+DAY_OFFSET).alignment = align_center
 
+    # ? columns 너비 조정
+    sheet.column_dimensions['A'].width = 30
+    sheet.column_dimensions['B'].width = 36
     
 
     wb.save("./temp_result.xlsx")
