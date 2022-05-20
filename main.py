@@ -16,6 +16,7 @@ def select_file():
         filepath = os.path.abspath(file.name)
         file_label.config(text = f"선택된 파일 : {str(filepath)}")
         file_name = str(filepath).split('/')[-1].strip('.xlsx')
+        file_name = str(file_name).split('\\')[-1].strip('.xlsx')
         f = str(filepath)
         if t:
             t = selected + "/" + file_name + "변환" + ".xlsx"
