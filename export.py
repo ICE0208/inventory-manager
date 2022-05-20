@@ -33,11 +33,19 @@ def save_to_file(year, month, infos: dict, TO: str):
     for i in range(2, len(infos)+2):
         sheet.cell(i, 1).alignment = align_center
         sheet.cell(i, 2).alignment = align_center
+    cur_n = 0
     for day in v[2]:
-        cur = num_to_excel_columns(int(day)+DAY_OFFSET)
+        cur_n = int(day)+DAY_OFFSET
+        cur = num_to_excel_columns(cur_n)
+        # ? 일 총
         pos = f"=SUM({cur}2:{cur}{len(infos)+1})"
-        sheet.cell(len(infos)+2, int(day)+DAY_OFFSET, pos)
-        sheet.cell(len(infos)+2, int(day)+DAY_OFFSET).alignment = align_center
+        sheet.cell(len(infos)+2, cur_n, pos)
+        sheet.cell(len(infos)+2, cur_n).alignment = align_center
+    cur_n = title_len
+    cur = num_to_excel_columns(cur_n)
+    pos = f"=SUM({cur}2:{cur}{len(infos)+1})"
+    sheet.cell(len(infos)+2, title_len, pos)
+    sheet.cell(len(infos)+2, title_len).alignment = align_center
 
     # ? columns 너비 조정
     sheet.column_dimensions['A'].width = 30

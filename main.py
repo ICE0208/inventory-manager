@@ -1,3 +1,4 @@
+from cmath import log
 from tkinter import ttk, filedialog
 from tkinter.filedialog import askopenfile
 from convert import *
@@ -9,6 +10,8 @@ def select_file():
     global t
     global file_name
     file = filedialog.askopenfile(mode='r', filetypes=[('Excel Files', '*.xlsx')])
+    result.config(text="")
+    error_label.config(text="")
     if file:
         filepath = os.path.abspath(file.name)
         file_label.config(text = f"선택된 파일 : {str(filepath)}")
@@ -24,10 +27,14 @@ def select_folder():
     selected = filedialog.askdirectory()
     t = selected + "/" + file_name + "변환" + ".xlsx"
     path_label.config(text = f"선택된 위치 : {selected}/{file_name}-변환.xlsx")
+    result.config(text="")
+    error_label.config(text="")
 
 def do_convert():
     global f
     global t
+    result.config(text="")
+    error_label.config(text="")
     if not f:
         return result.config(text="변환할 파일을 선택해주세요.")
     if not t:

@@ -7,8 +7,14 @@ def converter(FROM: str, TO: str):
     wb = openpyxl.load_workbook(FROM, data_only=True)
     ws = wb.active
     DATE = ws['A2'].value
-    YEAR = DATE.year
-    MONTH = DATE.month
+    try:
+        YEAR = DATE.year
+    except:
+        YEAR = str(DATE).split('-')[0]
+    try:
+        MONTH = DATE.month
+    except:
+        MONTH = str(DATE).split('-')[1]
 
     total_dict = {}
 
@@ -17,7 +23,7 @@ def converter(FROM: str, TO: str):
             continue
         
         # ? 현재 달의 날짜 정보
-        day = str(rows[0].value)[8:10].strip('0')
+        day = str(rows[0].value).split('-')[-1]
         if not day.isdigit():
             day = rows[0].value.day
         # -----------------
