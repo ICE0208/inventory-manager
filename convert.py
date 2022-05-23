@@ -52,8 +52,10 @@ def converter(FROM: str, TO: str):
 
         # ! 정보 정리하고 dict에 저장
         if sub_info_list == [""]:
-            add_to_dict(total_dict, brand, main_name, day, main_name)
+            print(1, end=" | ")
+            add_to_dict(total_dict, brand, main_name, day, order_name)
         else:
+            print(2, end=" | ")
             for sub_info in sub_info_list:
                 sub_info = sub_info.strip()
                 sub_name = get_sub_name(sub_info)

@@ -103,6 +103,7 @@ def get_mainsub_name(main_name, sub_name):
 def add_to_dict(total_dict, brand, name, day, info):
     key = get_key_name(name)
     count = get_count(info)
+    print(name, info, count)
     
     if key not in total_dict:
         total_dict[key] = [brand, name, dict()]
