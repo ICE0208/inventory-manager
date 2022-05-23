@@ -41,12 +41,12 @@ def do_convert():
     if not t:
         return result.config(text="저장할 위치를 선택해주세요.")
     
-    try:
-        converter(f, t)
-        return result.config(text="변환이 완료되었습니다.")
-    except Exception as log:
-        result.config(text="알 수 없는 오류가 발생했습니다. 아래 로그를 캡처하여 제작자에게 문의해주세요.")
-        error_label.config(text=log)
+    
+    converter(f, t)
+    return result.config(text="변환이 완료되었습니다.")
+    # except Exception as log:
+    #     result.config(text="알 수 없는 오류가 발생했습니다. 아래 로그를 캡처하여 제작자에게 문의해주세요.")
+    #     error_label.config(text=log)
 
 f = str()
 t = str()

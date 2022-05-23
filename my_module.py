@@ -40,8 +40,8 @@ def get_days_in_month(year, month):
 def get_main_name(str, brand):
     str = remove_brand(str, brand)
 
-    if '▶' not in str:
-        if '★' not in str:
+    if ARROW not in str:
+        if STAR not in str or BAR not in str:
             return str.strip().strip('[]')
 
         else:
@@ -83,7 +83,7 @@ def get_key_name(main_name: str):
     return main_name.replace(" ", "")
 
 def get_count(name):
-    if STAR not in name:
+    if STAR not in name or BAR not in name:
         return 1
     
     index_of_st = name[::-1].index(STAR)
